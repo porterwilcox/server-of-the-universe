@@ -25,7 +25,7 @@ router.put("/:id", (req, res, next) => {
         }))
         .catch(next)
 })
-router.delete("/:id", (req, res, next) => {
+router.delete("/id", (req, res, next) => {
     Stars.findByIdAndRemove(req.params.id)
         .then(() => res.send({
             message: "star removed"
