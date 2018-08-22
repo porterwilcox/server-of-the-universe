@@ -3,14 +3,19 @@ let server = express()
 let bodyParser = require("body-parser")
 let port = 3000
 require("./server-assets/database/db-config")
-let galaxyRoutes = require("./server-assets/routes/galaxies")
 
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({
     extended: true
 }))
 
+let galaxyRoutes = require("./server-assets/routes/galaxies")
+let starRoutes = require("./server-assets/routes/stars")
+let planetRoutes = require("./server-assets/routes/planets")
+
 server.use("/api/galaxies", galaxyRoutes)
+server.use("/api/stars", starRoutes)
+server.use("/api/planets", planetRoutes)
 
 server.use("/api/*", (error, req, res, next) => {
     res.send(error)
